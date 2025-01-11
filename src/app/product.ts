@@ -1,6 +1,6 @@
 export class Product {
     idProduct: number;
-    descrotion: string;
+    description: string;
     price: number;
     existence: number;  
 }
