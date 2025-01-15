@@ -3,18 +3,18 @@
         <h3>Agregar Producto</h3>
     </div>
 
-    <form>
+    <form (ngSubmit)="onSubmit()">
         <div class="mb-3">
           <label for="description" class="form-label">Descripción del Producto</label>
-          <input type="text" class="form-control" id="description">
+          <input type="text" class="form-control" id="description" name="description" required="true" [(ngModel)]="product.description">
         </div>
         <div class="mb-3">
           <label for="price" class="form-label">Precio</label>
-          <input type="number" step="any" class="form-control" id="price">
+          <input type="number" step="any" class="form-control" id="price" name='price' [(ngModel)]="product.price">
         </div>
         <div class="mb-3">
             <label for="existence" class="form-label">Existencia</label>
-            <input type="number" class="form-control" id="existence">
+            <input type="number" class="form-control" id="existence" name="existence" [(ngModel)]="product.existence">
           </div>
         <div class="text-center">
             <button type="submit" class="btn btn-warning btn-sm me-3">Registrar</button>
