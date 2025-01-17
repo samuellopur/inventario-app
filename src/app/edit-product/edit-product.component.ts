@@ -26,4 +26,8 @@ export class EditProductComponent {
       );
     }
 
+    onSubmit(){
+      //Editar producto
+    }
+
 }
