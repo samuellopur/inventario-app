@@ -19,4 +19,9 @@ export class ProductService {
   addProduct(product:Product): Observable<Object>{
     return this.httpClient.post(this.urlBase, product);
   }
+
+  getProductById(id:number){
+    return this.httpClient.get<Product>(`${this.urlBase}/${id}`);
+
+  }
 }
