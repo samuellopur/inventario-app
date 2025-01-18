@@ -5,29 +5,38 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-product',
-  templateUrl: './edit-product.component.html'
+  templateUrl: './edit-product.component.html',
 })
 export class EditProductComponent {
   product: Product = new Product();
-  id:number;
+  id: number;
 
   constructor(
-    private producService: ProductService, 
-    private route: ActivatedRoute, 
-    private router: Router){}
+    private producService: ProductService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
-    ngOnInit(){
-      this.id = this.route.snapshot.params['id'];
-      this.producService.getProductById(this.id).subscribe(
-        {
-          next:(data) =>this.product = data,
-          error: (errors: any) => console.log(errors)
-        }
-      );
-    }
+  ngOnInit() {
+    this.id = this.route.snapshot.params['id'];
+    this.producService.getProductById(this.id).subscribe({
+      next: (data) => (this.product = data),
+      error: (errors: any) => console.log(errors),
+    });
+  }
 
-    onSubmit(){
-      //Editar producto
-    }
+  onSubmit() {
+    this.saveProduct();
+  }
 
+  saveProduct() {
+    this.producService.editProduct(this.id, this.product).subscribe({
+      next: (data) => this.goProductList(),
+      error: (errors) => console.log(errors),
+    });
+  }
+
+  goProductList(){
+    this.router.navigate(['/products'])
+  }
 }
