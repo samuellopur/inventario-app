@@ -29,4 +29,13 @@ export class ProductListComponent {
   editProduct(id: number){
     this.enrutador.navigate(['edit-product', id]);
   }
+
+  deleteProduct(id: number){
+    this.productService.deleteProduct(id).subscribe(
+      {
+        next: (data) =>this.getProducts(),
+        error: (errors) =>console.log(errors)
+      }
+    );
+  }
 }
